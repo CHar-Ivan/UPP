@@ -1,196 +1,186 @@
-<Window x:Class="лаб29._1.MainWindow"
+﻿<Window x:Class="lab30_31.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:лаб29._1"
-        mc:Ignorable="d"
-        Title="Система управления ЖЭК" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
-	<Grid Background="#F5F5F5">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
+        Title="Информационная система ВУЗа (упрощенная)"
+        Height="600" Width="1000">
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Margin="5">
+            <Button Content="Сохранить базу" Width="130" Margin="5"
+                    Click="SaveButton_Click"/>
+            <Button Content="Удалить строку" Width="130" Margin="5"
+                    Click="DeleteButton_Click"/>
+            <Button Content="Отчет Excel" Width="130" Margin="5"
+                    Click="ExcelButton_Click"/>
+            <Button Content="Отчет Word" Width="130" Margin="5"
+                    Click="WordButton_Click"/>
+        </StackPanel>
 
-		<StackPanel Grid.Row="0" Background="#2C3E50" Orientation="Horizontal" Margin="10,5">
-			<Label x:Name="StatusLabel" Content="🔴 OFFLINE" Foreground="Orange" FontSize="13" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0"/>
-			<Button x:Name="ConnectButton" Content="🔗 Синхронизация" Click="ConnectAndSync_Click" Background="#27AE60" Foreground="White"  Margin="10,0,0,0" FontWeight="Bold" Cursor="Hand"/>
-			<Button x:Name="DisconnectButton" Content="🔌 Отключить" Click="Disconnect_Click" Background="#E74C3C" Foreground="White"  Margin="10,0,0,0" FontWeight="Bold" Cursor="Hand"/>
-			<Button x:Name="ExitButton" Content="❌ Выход" Click="Exit_Click" Background="#95A5A6" Foreground="White"  Margin="10,0,0,0" FontWeight="Bold" Cursor="Hand"/>
-		</StackPanel>
+        <TabControl x:Name="MainTabControl" Margin="5">
 
-		<TabControl Grid.Row="1" Margin="10">
-			<TabItem Header="🏢 Дома" Padding="12,6">
-				<Grid Background="White">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="*"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
+            <TabItem Header="Факультеты">
+                <DataGrid x:Name="FacultiesGrid"
+                          ItemsSource="{Binding FacultiesCollection}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="True"
+                          CanUserDeleteRows="True"
+                          Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Название факультета" Binding="{Binding FacultyName}" Width="*"/>
+                        <DataGridTextColumn Header="ФИО декана" Binding="{Binding DeanFullName}" Width="*"/>
+                        <DataGridTextColumn Header="Комната" Binding="{Binding RoomNumber}" Width="80"/>
+                        <DataGridTextColumn Header="Корпус" Binding="{Binding BuildingNumber}" Width="80"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
-					<Border Grid.Row="0" Background="#F8F9FA" Margin="10" Padding="15" CornerRadius="5" BorderBrush="#E0E0E0" BorderThickness="1">
-						<StackPanel>
-							<TextBlock Text="➕ Добавить новый жилой дом" FontSize="15" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,12"/>
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="2*"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
-								<StackPanel Margin="5">
-									<TextBlock Text="Адрес дома (Улица):" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="HouseAddressBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-								<StackPanel Grid.Column="1" Margin="5">
-									<TextBlock Text="Номер дома / Корпус:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="HouseBuildingBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-							</Grid>
+            <TabItem Header="Кафедры">
+                <DataGrid x:Name="DepartmentsGrid"
+                          ItemsSource="{Binding DepartmentsCollection}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="True"
+                          CanUserDeleteRows="True"
+                          Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True" Width="60"/>
+                        <DataGridTextColumn Header="Название кафедры" Binding="{Binding DepartmentName}" Width="*"/>
+                        <DataGridTextColumn Header="Заведующий" Binding="{Binding HeadName}" Width="*"/>
+                        <DataGridTextColumn Header="Комната" Binding="{Binding RoomNumber}" Width="80"/>
+                        <DataGridTextColumn Header="Корпус" Binding="{Binding BuildingNumber}" Width="80"/>
+                        <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}" Width="120"/>
+                        <DataGridTextColumn Header="Кол-во преподавателей" Binding="{Binding TeachersCount}" Width="120"/>
 
-							<Grid Margin="0,8,0,0">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="1.5*"/>
-								</Grid.ColumnDefinitions>
-								<StackPanel Margin="5">
-									<TextBlock Text="Кол-во этажей:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="HouseFloorsBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-								<StackPanel Grid.Column="1" Margin="5">
-									<TextBlock Text="Всего квартир:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="HouseApartmentsBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-								<StackPanel Grid.Column="2" Margin="5">
-									<TextBlock Text="Год постройки:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="HouseYearBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-								<StackPanel Grid.Column="3" Margin="5">
-									<TextBlock Text="Материал стен:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="HouseMaterialBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-							</Grid>
-							<Button Content="💾 Сохранить дом в систему" Click="AddHouse_Click" Background="#27AE60" Foreground="White" Padding="12" Margin="5,12,5,0" FontWeight="Bold" Cursor="Hand"/>
-						</StackPanel>
-					</Border>
+                        <DataGridComboBoxColumn Header="Факультет" 
+                                                SelectedValueBinding="{Binding FacultyName, UpdateSourceTrigger=PropertyChanged}" 
+                                                SelectedValuePath="FacultyName" 
+                                                DisplayMemberPath="FacultyName"
+                                                Width="180">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.FacultiesCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.FacultiesCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
-					<DataGrid x:Name="HousesDataGrid" Grid.Row="1" Margin="10" AutoGenerateColumns="False" CanUserAddRows="False" BorderBrush="#E0E0E0">
-						<DataGrid.Columns>
-							<DataGridTextColumn Header="Адрес" Binding="{Binding Address}" Width="2*"/>
-							<DataGridTextColumn Header="Номер" Binding="{Binding BuildingNumber}" Width="80"/>
-							<DataGridTextColumn Header="Этажи" Binding="{Binding FloorsCount}" Width="70"/>
-							<DataGridTextColumn Header="Квартир" Binding="{Binding ApartmentsCount}" Width="80"/>
-							<DataGridTextColumn Header="Год" Binding="{Binding BuildYear}" Width="80"/>
-							<DataGridTextColumn Header="Материал" Binding="{Binding Material}" Width="*"/>
-						</DataGrid.Columns>
-					</DataGrid>
+            <TabItem Header="Преподаватели">
+                <DataGrid x:Name="TeachersGrid"
+                          ItemsSource="{Binding TeachersCollection}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="True"
+                          CanUserDeleteRows="True"
+                          Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" Width="*"/>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" Width="*"/>
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" Width="*"/>
+                        <DataGridTextColumn Header="Год рождения" Binding="{Binding BirthYear}" Width="90"/>
+                        <DataGridTextColumn Header="Год поступления" Binding="{Binding StartYear}" Width="100"/>
+                        <DataGridTextColumn Header="Стаж" Binding="{Binding Experience}" Width="70"/>
+                        <DataGridTextColumn Header="Должность" Binding="{Binding Position}" Width="*"/>
+                        <DataGridTextColumn Header="Пол" Binding="{Binding Gender}" Width="70"/>
+                        <DataGridTextColumn Header="Город" Binding="{Binding City}" Width="*"/>
 
-					<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10" Background="#F8F9FA">
-						<TextBlock Text="Выбрать дом для удаления:" VerticalAlignment="Center" Margin="5,0" FontWeight="Bold"/>
-						<ComboBox x:Name="HouseCombo" Width="250" Margin="5" DisplayMemberPath="Address" SelectedValuePath="Id"/>
-						<Button Content="🔄 Обновить" Click="RefreshHouses_Click" Background="#2980B9" Foreground="White" Padding="15,7" Margin="5,0"/>
-						<Button Content="🗑️ Удалить" Click="DeleteHouse_Click" Background="#C0392B" Foreground="White" Padding="15,7" Margin="5,0"/>
-					</StackPanel>
-				</Grid>
-			</TabItem>
+                        <DataGridComboBoxColumn Header="Кафедра" 
+                                                SelectedValueBinding="{Binding DepartmentId, UpdateSourceTrigger=PropertyChanged}" 
+                                                SelectedValuePath="Id" 
+                                                DisplayMemberPath="DepartmentName"
+                                                Width="180">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.DepartmentsCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.DepartmentsCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
-			<TabItem Header="🏠 Квартиры" Padding="12,6">
-				<Grid Background="White">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="Auto"/>
-						<RowDefinition Height="*"/>
-						<RowDefinition Height="Auto"/>
-					</Grid.RowDefinitions>
+            <TabItem Header="Дисциплины">
+                <DataGrid x:Name="DisciplinesGrid"
+                          ItemsSource="{Binding DisciplinesCollection}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="True"
+                          CanUserDeleteRows="True"
+                          Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True" Width="60"/>
+                        <DataGridTextColumn Header="Название дисциплины" Binding="{Binding DisciplineName}" Width="*"/>
+                        <DataGridTextColumn Header="Кол-во часов" Binding="{Binding HoursCount}" Width="100"/>
+                        <DataGridTextColumn Header="Цикл" Binding="{Binding Cycle}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
-					<Border Grid.Row="0" Background="#F8F9FA" Margin="10" Padding="15" CornerRadius="5" BorderBrush="#E0E0E0" BorderThickness="1">
-						<StackPanel>
-							<TextBlock Text="➕ Регистрация новой квартиры в системе" FontSize="15" FontWeight="Bold" Foreground="#2C3E50" Margin="0,0,0,12"/>
+            <TabItem Header="Учебная нагрузка">
+                <DataGrid x:Name="WorkloadsGrid"
+                          ItemsSource="{Binding WorkloadsCollection}"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="True"
+                          CanUserDeleteRows="True"
+                          Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True" Width="60"/>
 
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="2*"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
+                        <DataGridComboBoxColumn Header="Преподаватель" 
+                                                SelectedValueBinding="{Binding TeacherId, UpdateSourceTrigger=PropertyChanged}" 
+                                                SelectedValuePath="Id" 
+                                                DisplayMemberPath="FullName"
+                                                Width="180">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.TeachersCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.TeachersCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
 
-								<StackPanel Margin="5">
-									<TextBlock Text="Выбрать жилой дом:" Foreground="#2980B9" FontWeight="Bold" Margin="0,0,0,4" FontSize="12"/>
-									<ComboBox x:Name="AptHouseSelectionCombo" Padding="5" DisplayMemberPath="Address" SelectedValuePath="Id" VerticalContentAlignment="Center" HorizontalAlignment="Stretch"/>
-								</StackPanel>
+                        <DataGridComboBoxColumn Header="Дисциплина" 
+                                                SelectedValueBinding="{Binding DisciplineId, UpdateSourceTrigger=PropertyChanged}" 
+                                                SelectedValuePath="Id" 
+                                                DisplayMemberPath="DisciplineName"
+                                                Width="180">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.DisciplinesCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                            <DataGridComboBoxColumn.EditingElementStyle>
+                                <Style TargetType="ComboBox">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.DisciplinesCollection, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.EditingElementStyle>
+                        </DataGridComboBoxColumn>
 
-								<StackPanel Grid.Column="1" Margin="5">
-									<TextBlock Text="Номер квартиры:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptNumberBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
+                        <DataGridTextColumn Header="Учебный год" Binding="{Binding AcademicYear}" Width="100"/>
+                        <DataGridTextColumn Header="Семестр" Binding="{Binding Semester}" Width="80"/>
+                        <DataGridTextColumn Header="Группы" Binding="{Binding Groups}" Width="*"/>
+                        <DataGridTextColumn Header="Кол-во студентов" Binding="{Binding StudentCount}" Width="120"/>
+                        <DataGridTextColumn Header="Вид контроля" Binding="{Binding ControlType}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
 
-								<StackPanel Grid.Column="2" Margin="5">
-									<TextBlock Text="Этаж:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptFloorBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-							</Grid>
+        </TabControl>
 
-							<Grid Margin="0,6,0,0">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="2*"/>
-								</Grid.ColumnDefinitions>
-
-								<StackPanel Margin="5">
-									<TextBlock Text="Площадь (м²):" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptAreaBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-
-								<StackPanel Grid.Column="1" Margin="5">
-									<TextBlock Text="Кол-во комнат:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptRoomsBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-
-								<StackPanel Grid.Column="2" Margin="5">
-									<TextBlock Text="ФИО Владельца:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptOwnerBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-							</Grid>
-
-							<Grid Margin="0,6,0,0">
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="*"/>
-								</Grid.ColumnDefinitions>
-
-								<StackPanel Margin="5">
-									<TextBlock Text="Номер телефона:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptPhoneBox" Padding="6" VerticalContentAlignment="Center" Text="+375"/>
-								</StackPanel>
-
-								<StackPanel Grid.Column="1" Margin="5">
-									<TextBlock Text="Email владельца:" Foreground="#555" Margin="0,0,0,4" FontSize="12"/>
-									<TextBox x:Name="AptEmailBox" Padding="6" VerticalContentAlignment="Center"/>
-								</StackPanel>
-							</Grid>
-
-							<Button Content="💾 Зарегистрировать квартиру" Click="AddApartment_Click" Background="#27AE60" Foreground="White" Padding="10" Margin="5,12,5,0" FontWeight="Bold" Cursor="Hand"/>
-						</StackPanel>
-					</Border>
-
-					<DataGrid x:Name="ApartmentsDataGrid" Grid.Row="1" Margin="10" AutoGenerateColumns="False" CanUserAddRows="False" BorderBrush="#E0E0E0">
-						<DataGrid.Columns>
-							<DataGridTextColumn Header="№ Кв." Binding="{Binding ApartmentNumber}" Width="60"/>
-							<DataGridTextColumn Header="Этаж" Binding="{Binding Floor}" Width="60"/>
-							<DataGridTextColumn Header="Площадь" Binding="{Binding Area}" Width="80"/>
-							<DataGridTextColumn Header="Комнат" Binding="{Binding RoomsCount}" Width="70"/>
-							<DataGridTextColumn Header="ФИО Собственника" Binding="{Binding OwnerName}" Width="2*"/>
-							<DataGridTextColumn Header="Телефон" Binding="{Binding OwnerPhone}" Width="130"/>
-							<DataGridTextColumn Header="Email" Binding="{Binding OwnerEmail}" Width="1.5*"/>
-						</DataGrid.Columns>
-					</DataGrid>
-
-					<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="10" Background="#F8F9FA">
-						<Button Content="🔄 Обновить список" Click="RefreshApartments_Click" Background="#2980B9" Foreground="White" Margin="5,0"/>
-						<Button Content="🗑️ Удалить квартиру" Click="DeleteApartment_Click" Background="#C0392B" Foreground="White" Margin="5,0"/>
-					</StackPanel>
-				</Grid>
-			</TabItem>
-		</TabControl>
-	</Grid>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem Content="Система готова к работе."/>
+        </StatusBar>
+    </DockPanel>
 </Window>
