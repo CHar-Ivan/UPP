@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../TestProject2/TestProject2.csproj" />
+  <Project Path="тест по.csproj" />
+</Solution>

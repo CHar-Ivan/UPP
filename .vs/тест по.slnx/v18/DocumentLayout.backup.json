@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EED9E2DB-7361-4594-8E75-028949D45F07}|..\\TestProject2\\TestProject2.csproj|c:\\users\\asus\\source\\repos\\testproject2\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174DB371-888F-4209-8D52-E0DB51C94924}|\u0442\u0435\u0441\u0442 \u043F\u043E.csproj|c:\\users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\\u0442\u0435\u0441\u0442 \u043F\u043E.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{174DB371-888F-4209-8D52-E0DB51C94924}|\u0442\u0435\u0441\u0442 \u043F\u043E.csproj|solutionrelative:\u0442\u0435\u0441\u0442 \u043F\u043E.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EED9E2DB-7361-4594-8E75-028949D45F07}|..\\TestProject2\\TestProject2.csproj|c:\\users\\asus\\source\\repos\\testproject2\\testproject2.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{174DB371-888F-4209-8D52-E0DB51C94924}|\u0442\u0435\u0441\u0442 \u043F\u043E.csproj|c:\\users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{174DB371-888F-4209-8D52-E0DB51C94924}|\u0442\u0435\u0441\u0442 \u043F\u043E.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 598,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TestProject2",
+              "DocumentMoniker": "C:\\Users\\asus\\source\\repos\\TestProject2\\TestProject2.csproj",
+              "RelativeDocumentMoniker": "..\\TestProject2\\TestProject2.csproj",
+              "ToolTip": "C:\\Users\\asus\\source\\repos\\TestProject2\\TestProject2.csproj",
+              "RelativeToolTip": "..\\TestProject2\\TestProject2.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-17T05:16:43.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "\u0442\u0435\u0441\u0442 \u043F\u043E",
+              "DocumentMoniker": "C:\\Users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\\u0442\u0435\u0441\u0442 \u043F\u043E.csproj",
+              "RelativeDocumentMoniker": "\u0442\u0435\u0441\u0442 \u043F\u043E.csproj",
+              "ToolTip": "C:\\Users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\\u0442\u0435\u0441\u0442 \u043F\u043E.csproj",
+              "RelativeToolTip": "\u0442\u0435\u0441\u0442 \u043F\u043E.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-06-17T05:16:26.682Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\Users\\asus\\source\\repos\\TestProject2\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\TestProject2\\UnitTest1.cs",
+              "ToolTip": "C:\\Users\\asus\\source\\repos\\TestProject2\\UnitTest1.cs",
+              "RelativeToolTip": "..\\TestProject2\\UnitTest1.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAowDsAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T05:13:39.168Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\asus\\source\\repos\\\u0442\u0435\u0441\u0442 \u043F\u043E\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAADwvzUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-17T05:12:36.301Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

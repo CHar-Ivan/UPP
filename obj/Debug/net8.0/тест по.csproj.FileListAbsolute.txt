@@ -1,0 +1,14 @@
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.AssemblyInfoInputs.cache
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.AssemblyInfo.cs
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.csproj.CoreCompileInputs.cache
+C:\Users\asus\source\repos\тест по\bin\Debug\net8.0\тест по.exe
+C:\Users\asus\source\repos\тест по\bin\Debug\net8.0\тест по.deps.json
+C:\Users\asus\source\repos\тест по\bin\Debug\net8.0\тест по.runtimeconfig.json
+C:\Users\asus\source\repos\тест по\bin\Debug\net8.0\тест по.dll
+C:\Users\asus\source\repos\тест по\bin\Debug\net8.0\тест по.pdb
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.dll
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\refint\тест по.dll
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.pdb
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\тест по.genruntimeconfig.cache
+C:\Users\asus\source\repos\тест по\obj\Debug\net8.0\ref\тест по.dll
